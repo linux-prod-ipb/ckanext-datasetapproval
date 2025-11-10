@@ -7,9 +7,8 @@
     <div class="alert alert-warning" role="alert">
       <p>{% trans %}This dataset is waiting for an administrator approval.{% endtrans %}</p>
       {% if h.is_admin(c.user, c.pkg_dict.owner_org) %}
-      {# TODO: remove style #}
-      <div style="margin-top: 10px">
-        <a href="/dataset-publish/{{ c.pkg_dict.id }}/approve" class="btn btn-primary">
+      <div class="mt-2">
+        <a href="/dataset-publish/{{ c.pkg_dict.id }}/approve" class="btn btn-primary me-2">
           {% trans %}Approve Dataset{% endtrans %}
         </a>
         <a href="/dataset-publish/{{ c.pkg_dict.id }}/reject" class="btn btn-danger">
@@ -34,17 +33,17 @@
     {% block package_description %}
     <div class="dataset-status-label">
       {% if pkg.private %}
-        <span class="dataset-private label label-inverse">
+        <span class="dataset-private badge bg-dark">
           <i class="fa fa-lock"></i>
           {{ _('Private') }}
         </span>
       {% endif %}
       {% if pkg.get('state', '').startswith('draft') %}
-      <span class="label label-info">{{ _('Draft') }}</span>
+      <span class="badge rounded-pill bg-info">{{ _('Draft') }}</span>
     {% elif pkg.get('publishing_status', '').startswith('draft') %}
-      <span class="label label-info">{{ _('Draft') }}</span>
+      <span class="badge rounded-pill bg-info">{{ _('Draft') }}</span>
     {% elif pkg.get('state', '').startswith('deleted') %}
-      <span class="label label-danger">{{ _('Deleted') }}</span>
+      <span class="badge rounded-pill bg-danger">{{ _('Deleted') }}</span>
     {% endif %}
     </div>
       <h1>
